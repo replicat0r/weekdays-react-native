@@ -5,7 +5,6 @@ var AppRegistry = React.AppRegistry;
 var Text = React.Text;
 var View = React.View;
 var StyleSheet = React.StyleSheet;
-var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 var DayItem = require ('./src/day-item')
 
 
@@ -21,9 +20,14 @@ var Weekdays = React.createClass({
     )
   },
   days: function(){
-    return DAYS.map(function(day){
-      return <DayItem day={day} />
-    })
+    var daysItems = []
+    for(var i = 0; i<7; i++){
+      var day = Moment().add(i,'Days').format('dddd');
+      daysItems.push(
+        <DayItem day = {day} daysUntil={i} />
+      )
+    }
+    return daysItems;
   }
 
 })
