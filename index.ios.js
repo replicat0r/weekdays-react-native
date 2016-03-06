@@ -1,5 +1,5 @@
 // import some code we need
-
+var Moment = require('moment')
 var React = require('react-native');
 var AppRegistry = React.AppRegistry;
 var Text = React.Text;
@@ -13,13 +13,17 @@ var Weekdays = React.createClass({
   render: function(){
     return(
 
-     <View style={styles.container}>
-      <Text>
-        Days of the week
-      </Text>
-      <DayItem day={DAYS[0]}/>
-    </View>
-  )
+      <View style={styles.container}>
+
+
+        {this.days()}
+      </View>
+    )
+  },
+  days: function(){
+    return DAYS.map(function(day){
+      return <DayItem day={day} />
+    })
   }
 
 })
